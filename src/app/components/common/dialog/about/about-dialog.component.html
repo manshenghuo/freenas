@@ -1,0 +1,63 @@
+<div class="wrapper">
+	<div class="header">
+		<div class="header-overlay">
+			<div class="logo-wrapper">
+			</div>
+			<div id="title" *ngIf="extraMsg">{{ helptext.tagline | translate }}</div>
+		</div>
+	</div>
+
+	<div class="content-wrapper">
+		<div class="help">{{ helptext.help | translate }}</div>
+		<div class="line-item">
+			<div fxFlex="10%"><mat-icon class="bullet-icon">assignment</mat-icon></div>
+			<div fxFlex="90%" class="medium-font">{{ helptext.docsA | translate }} 
+				<a href="#" target="_blank" class="external-link">
+					{{ helptext.docsB | translate }}</a> {{ helptext.docsC | translate }}
+			</div>
+		</div>
+	
+		<div class="line-item">
+			<div fxFlex="10%"><mat-icon class="bullet-icon">group</mat-icon></div>
+			<div fxFlex="90%" class="medium-font">{{ helptext.forumsA | translate}} <a href="#" 
+				target="_blank" class="external-link">
+				{{ helptext.forumsB | translate }}</a> {{ helptext.forumsC | translate }} {{systemType}} {{ helptext.forumsD }}.
+			</div>
+		</div>
+	
+		<div class="line-item" *ngIf="systemType==='CORE'">
+			<div fxFlex="90%" class="medium-font">{{ helptext.contactA | translate }} 
+				<a href="#" 
+					target="_blank" class="external-link">
+				{{ helptext.contactB | translate }}</a> {{ helptext.contactC | translate }} 
+				<a href="#" 
+					target="_blank" class="external-link">{{ helptext.contactD | translate }}</a>.
+			</div>	
+		</div>
+		<div id="open-source">NAS {{systemType}} {{ helptext.opensourceA | translate }} <a href="https://github.com/" target="_blank" 
+			class="external-link">{{ helptext.opensourceB | translate }}</a> {{ helptext.opensourceC | translate }} 
+		</div>
+		<div id="findme" *ngIf="extraMsg">
+			{{ helptext.findagainA | translate }} <mat-icon>settings</mat-icon> {{ helptext.findagainB | translate }} 
+			<span class="emphasis">{{ helptext.findagainC | translate }}</span>.
+		</div>
+	</div>
+
+</div>
+
+<div mat-dialog-actions id="actions">
+	<div id="button-wrapper" fxFlex="55%" fxFlex.xs="100">
+	<button *ngIf="extraMsg; else aboutButton" mat-button class="mat-button mat-primary" (click)="dialogRef.close(false)"
+		ix-auto ix-auto-type="button" ix-auto-identifier="CLOSE" (click)="turnOffWelcomeDialog()">
+			{{ helptext.actionBtnText.splash | translate | uppercase }}
+	</button>
+
+	<ng-template #aboutButton>
+		<button mat-button class="mat-button mat-primary" (click)="dialogRef.close(false)"
+			ix-auto ix-auto-type="button" ix-auto-identifier="CLOSE" (click)="turnOffWelcomeDialog()">
+			{{ helptext.actionBtnText.about | translate | uppercase }}
+		</button>
+	</ng-template>
+
+	</div>
+</div>
